@@ -13,7 +13,6 @@ class App extends Component {
     }
   }
 
-
   handleLogout = () => {
     userService.logout();
     this.setState({ user: null });
@@ -27,7 +26,7 @@ class App extends Component {
 
   async componentDidMount() {
     // const scores = await scoresService.index();
-    const user = userService.getUser();
+    const user = await userService.getUser();
     this.setState({ user });
   }
 
@@ -36,6 +35,11 @@ class App extends Component {
       <div className="App">
         <h1>Howdy</h1>
         <Switch>
+          <Route exact path='/' render={() =>
+            <div>
+              Hey hey!
+            </div>
+          }/>
           <Route exact path='/signup' render={({ history }) => 
             <SignupPage
               history={history}
