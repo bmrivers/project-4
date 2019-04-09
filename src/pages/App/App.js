@@ -3,13 +3,15 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import userService from '../../utils/userService';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
+import MainPage from '../MainPage/MainPage'
 import './App.css';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      user: null
+      user: null,
+      trackInputs: 5
     }
   }
 
@@ -33,12 +35,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Howdy</h1>
         <Switch>
           <Route exact path='/' render={() =>
-            <div>
-              Hey hey!
-            </div>
+            <MainPage 
+              user={this.user}
+              trackInputs={this.trackInputs}
+            />
           }/>
           <Route exact path='/signup' render={({ history }) => 
             <SignupPage

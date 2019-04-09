@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import NavBar from '../../components/NavBar/NavBar';
 import './LoginPage.css';
 import userService from '../../utils/userService';
 
@@ -22,19 +23,21 @@ class LoginPage extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await userService.signup(this.state);
+      await userService.login(this.state);
+      // Let <App> know a user has signed up!
+      this.props.handleSignupOrLogin();
       // Successfully signed up - show GamePage
-      this.props.handleSignuporLogin();
       this.props.history.push('/');
     } catch (err) {
-      // Invalid user data (probably duplicate email)
-      this.props.updateMessage(err.message);
+      // Use a modal or toast in your apps instead of alert
+      alert('Invalid Credentials!');
     }
   }
 
   render() {
     return (
       <div className="LoginPage">
+      <NavBar />
         <header className="header-footer">Log In</header>
         <form className="form-horizontal" onSubmit={this.handleSubmit} >
           <div className="form-group">
