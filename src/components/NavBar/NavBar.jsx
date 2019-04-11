@@ -27,12 +27,12 @@ const NavBar = (props) => {
       </Nav.Item>
       <Nav.Item>
         <Nav.Link href="/signup">Signup</Nav.Link>
-      </Nav.Item>
+   </Nav.Item>{/*}
       <Nav.Item>
         <Nav.Link eventKey="disabled" disabled>
           {props.user}
         </Nav.Link>
-      </Nav.Item>
+      </Nav.Item> */}
     </Nav>
   );
 }

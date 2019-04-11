@@ -1,41 +1,36 @@
 import React, {Component} from 'react';
 import { Button, Form } from 'react-bootstrap';
-
-const request = require('request');
+import './PlaylistForm.css';
 
 class PlaylistForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {
+        this.state = {...this.initialize(), user: props.user}
+    }
+
+    initialize = (props) => {
+        return ({
             playlistName: '',
-            author: props.user,
-            tracks: ['', ''], // in model, this is array rn
-            trackInputs: ['track-0', 'track-1']
-          };
+            tracksFromInput: ['', ''], // in model, this is array rn
+            trackInputs: ['track-0', 'track-1'] 
+        })
     }
 
     appendInput = () => {
         var newTrackInput = `track-${this.state.trackInputs.length}`;
-        var copyTracks = this.state.tracks;
+        var copyTracks = this.state.tracksFromInput;
         copyTracks.push('');
-        this.setState({tracks : copyTracks})
+        this.setState({tracksFromInput : copyTracks})
         this.setState((prevState) => ({ trackInputs: prevState.trackInputs.concat(newTrackInput)}))
     }
 
     handleTrackChange = (e, idx) => {
-        let copyTracks = this.state.tracks;
+        let copyTracks = this.state.tracksFromInput;
         copyTracks[idx] = e.target.value;
         console.log(copyTracks)
-        this.setState({ tracks : copyTracks })
+        this.setState({ tracksFromInput : copyTracks })
     }
 
-    // handleTrackInput = (e) => {
-    //     var newTrack = this.state.tracks[e.target.idx];
-    //     console.log(newTrack)
-    //     console.log(e.target.idx)
-    //     // this.setState({ [e.target.name]: e.target.value })
-    //     this.setState((prevState) => ({tracks: prevState.tracks.concat(newTrack)}))
-    // }
 
     handleNameInput = (e) => {
         console.log(e.target.name)
@@ -43,72 +38,83 @@ class PlaylistForm extends Component {
         this.setState({ playlistName : e.target.value })
     }
 
-    handleSubmit = (e) => {
-        console.log('starting to submit Playlist');
-        console.log('Playlist Form appears filled');
-        const data = {
-            tracks: this.state.tracks,
-            playlistName: this.state.playlistName,
-            author: this.state.author,
-        };
+    // handleSubmitPlaylist = (e) => {
+    //     e.preventDefault();
+    //     console.log('starting to submit Playlist');
+    //     // console.log('Playlist Form appears filled');
+    //     const data = {
+    //         tracksFromInput: this.state.tracksFromInput,
+    //         playlistName: this.state.playlistName,
+    //         author: this.state.author,
+    //     };
 
-        return fetch('/api/playlists', {
-            method: 'POST',
-            headers: new Headers({'Content-Type': 'application/json'}),
-            body: JSON.stringify(data)
-        })
-        .then(res => {
-            if (res.ok) return res.json();
-            throw new Error('There was an error!');
-        })
-        // request
-        // .post('/api/playlists')
-        // .send(data)
-        // .set('Accept', 'application/json')//????
-        // .catch(err => 'There was an error, ' + err.message);
+    //     return fetch('/api/playlists/', {
+    //         method: 'POST',
+    //         headers: new Headers({'Content-Type': 'application/json'}),
+    //         body: JSON.stringify(data)
+    //     })
+    //     .then(res => {
+    //         if (res.ok) return res.json();
+    //         throw new Error('There was an error!');
+    //     })
+    //     .then(() => {
+    //         this.setState(this.initialize())
+    //     })
+    // }
 
-    // try this!!!!!!!!!!!!!!!^^^^^^^^^^^^^^^^^^^^^^^^^^????GGGG?GGG^
-        // return fetch(BASE_URL + 'signup', {
-        //     method: 'POST',
-        //     headers: new Headers({'Content-Type': 'application/json'}),
-        //     body: JSON.stringify(user)
-        //   })
-        //   .then(res => {
-        //     if (res.ok) return res.json();
-        //     // Probably a duplicate email
-        //     throw new Error('Email already taken!');
-        //   })
-        //   .then(({token}) => {
-        //     tokenService.setToken(token);
-        //   });
+    handleClearClick = () => {
+        this.setState(this.initialize())
     }
 
     render() {
         return (
           <div>
-            <Form>
-              <Form.Group onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.handleSubmit} className="Form">
+              <Form.Group>
                 <Form.Label>Name your playlist: </Form.Label>
                 <Form.Control
-                  onChange={this.handleNameInput}
-                  name="playlistName"
-                  value={this.state.name}
+                    className="playlist-name"
+                    onChange={this.handleNameInput}
+                    name="playlistName"
+                    value={this.state.name}
                 />
                 <br />
-                <Form.Label>Add tracks: </Form.Label> <br />
+                <Form.Label>Manually Add tracks: </Form.Label> <br />
                 {this.state.trackInputs.map((input, idx) => 
                     <div key={idx}>
-                        {idx + 1}. Song, Artist
-                        <Form.Control 
-                            type="tracks"
-                            onChange={(e) => this.handleTrackChange(e,idx)}
-                            key={idx}
-                            value={this.state.tracks[idx]}
-                        />
+                        {idx + 1}. Song, Artist<br />
+                        <div className="manual-input">
+                            <Form.Control 
+                                type="tracksFromInput"
+                                onChange={(e) => this.handleTrackChange(e,idx)}
+                                key={idx}
+                                value={this.state.tracksFromInput[idx]}
+                            />
+                            <Button variant="outline-primary" onSubmit={this.props.handleAddSong(this.state.tracksFromInput[idx])}>+</Button>
+                        </div>
                     </div>
                 )}
-                <Button onClick={() => this.appendInput()}>Another one</Button><br />
-                <Button type='submit' value='submit'>Submit</Button>
+                <div className="button-holder">
+                    <Button 
+                        className="Button"
+                        onClick={() => this.appendInput()}
+                    >
+                        Another one</Button><br />
+                    <Button
+                        className="Button" 
+                        onClick={() => this.handleClearClick()}
+                    >
+                        Clear
+                    </Button>
+                    <br />
+                    <Button 
+                        className="Button alert"
+                        type='Submit' 
+                        value='Submit'
+                    >
+                        Add Tracks
+                    </Button>
+                </div>
               </Form.Group>
             </Form>
           </div>

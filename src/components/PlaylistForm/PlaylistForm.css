@@ -1,0 +1,25 @@
+.Form {
+    max-width: 500px; 
+}
+
+.playlist-name {
+    max-width: 300px;
+}
+
+.Button {
+    margin: 10px;
+}
+
+.button-holder {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.manual-input {
+    display: flex;
+}
+
+.manual-input Button {
+    margin-left: 10px;
+}
