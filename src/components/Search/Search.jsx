@@ -52,10 +52,8 @@ class Search extends Component {
         // if (this.state.searchValue.length) {
             try {
                 const results = await getSearchResults(this.state.searchValue);
-                // console.log('Results:', results)
                 this.setState(() => ({searchResults: results.results.trackmatches.track}))
                 console.log(this.state.searchResults)
-
             } catch (err) {
                 console.log('there was an error: '+ err);
             }
@@ -80,7 +78,7 @@ class Search extends Component {
                     </thead>
                     <tbody>
                 {this.state.searchResults.map((track, idx) => 
-                        <tr key={idx}>
+                        <tr key={`${track.mbid}${idx}`}>
                             <td>{idx + 1}. </td>
                             <LastfmTrack 
                                 track={track}

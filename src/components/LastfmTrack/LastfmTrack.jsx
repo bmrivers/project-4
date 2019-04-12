@@ -5,16 +5,10 @@ import { Button, Form, Table } from 'react-bootstrap';
 class LastfmTrack extends Component {
     constructor(props) {
         super(props);
-        this.state = {...this.initialize(props)}
-    }
-
-    initialize = (props) => {
-        return(
-            {
-                track: this.props.track,
-                hidden: false
-            }
-        )
+        this.state = {
+            track: this.props.track,
+            hidden: false
+        }
     }
 
     handleClick = (e) => {

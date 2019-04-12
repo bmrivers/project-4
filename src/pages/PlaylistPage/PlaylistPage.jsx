@@ -4,6 +4,7 @@ import NavBar from '../../components/NavBar/NavBar';
 import Search from '../../components/Search/Search';
 
 import PlaylistForm from '../../components/PlaylistForm/PlaylistForm';
+import CurrentPlaylist from '../../components/CurrentPlaylist/CurrentPlaylist';
 import './PlaylistPage.css'
 
 const PlaylistPage = (props) => {
@@ -19,6 +20,13 @@ const PlaylistPage = (props) => {
                 trackIputs={props.trackIputs}
                 user={props.user}
                 handleAddSong={props.handleAddSong}
+                newPlaylistName={props.newPlaylistName}
+                handleUpdateName={props.handleUpdateName}
+            />
+            <CurrentPlaylist
+                newPlaylist={props.newPlaylist}
+                newPlaylistName={props.newPlaylistName}
+                handleSavePlaylist={props.handleSavePlaylist}
             />
             <Search 
                 className="Search"

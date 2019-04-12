@@ -6,7 +6,10 @@ const PlaylistSchema = new Schema({
     playlistName: String,
     author: String, // User
     // tracks: [String] // or keys
-    tracks: [String]
+    tracks: [{
+      artist: String,
+      name: String
+    }]
   }, {
     timestamps: true
   });

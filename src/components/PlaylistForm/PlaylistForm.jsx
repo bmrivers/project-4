@@ -10,7 +10,6 @@ class PlaylistForm extends Component {
 
     initialize = (props) => {
         return ({
-            playlistName: '',
             tracksFromInput: ['', ''], // in model, this is array rn
             trackInputs: ['track-0', 'track-1'] 
         })
@@ -24,19 +23,21 @@ class PlaylistForm extends Component {
         this.setState((prevState) => ({ trackInputs: prevState.trackInputs.concat(newTrackInput)}))
     }
 
-    handleTrackChange = (e, idx) => {
-        let copyTracks = this.state.tracksFromInput;
-        copyTracks[idx] = e.target.value;
-        console.log(copyTracks)
-        this.setState({ tracksFromInput : copyTracks })
+    handleTrackChange = (e) => {
+        if (e.target.value) {
+            let copyTracks = this.state.tracksFromInput;
+            copyTracks[e.target.key] = e.target.value;
+            console.log(copyTracks)
+            this.setState({ tracksFromInput : copyTracks })
+        }
     }
 
 
-    handleNameInput = (e) => {
-        console.log(e.target.name)
-        console.log(e.target.value)
-        this.setState({ playlistName : e.target.value })
-    }
+    // handleNameInput = (e) => {
+    //     console.log(e.target.name)
+    //     console.log(e.target.value)
+    //     this.setState({ playlistName : e.target.value })
+    // }
 
     // handleSubmitPlaylist = (e) => {
     //     e.preventDefault();
@@ -74,7 +75,7 @@ class PlaylistForm extends Component {
                 <Form.Label>Name your playlist: </Form.Label>
                 <Form.Control
                     className="playlist-name"
-                    onChange={this.handleNameInput}
+                    onChange={this.props.handleUpdateName}
                     name="playlistName"
                     value={this.state.name}
                 />
@@ -86,9 +87,9 @@ class PlaylistForm extends Component {
                         <div className="manual-input">
                             <Form.Control 
                                 type="tracksFromInput"
-                                onChange={(e) => this.handleTrackChange(e,idx)}
                                 key={idx}
                                 value={this.state.tracksFromInput[idx]}
+                                onChange={this.handleTrackChange}
                             />
                             <Button variant="outline-primary" onSubmit={this.props.handleAddSong(this.state.tracksFromInput[idx])}>+</Button>
                         </div>

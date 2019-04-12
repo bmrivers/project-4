@@ -11,8 +11,8 @@ function index() {
   const options = {
     method: 'GET',
     headers: {
-        'Authorization': 'Bearer ' + tokenService.getToken()
-    }
+      'Content-type': 'application/json',
+    },
   };
   return fetch(BASE_URL, options).then(res => res.json());
 }
@@ -22,8 +22,6 @@ function create(playlist) {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
-        // Add this header - don't forget the space after Bearer
-        'Authorization': 'Bearer ' + tokenService.getToken()
       },
       body: JSON.stringify(playlist)
     };
