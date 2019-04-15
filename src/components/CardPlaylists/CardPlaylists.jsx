@@ -1,23 +1,30 @@
 import React from 'react';
+import playlistImg from '../../images/playlist.png'
 import { Card, Button } from 'react-bootstrap';
-import playlistsService from '../../utils/playlistsService';
 import './CardPlaylists.css'
 
 const CardPlaylists = (props) => {
-    // for each playlist
     return (
         <div className="CardPlaylists">
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="holder.js/100px180" />
+        {props.playlists.map((playlist, idx) => (
+            <Card className="Card" key={playlist._id} style={{ width: '18rem' }}>
+                <Card.Img variant="top" src={playlistImg} style={{ width: '40%', margin: '10px' }}/>
                 <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
+                    <Card.Title>{playlist.playlistName}</Card.Title>
+                    <h6>{playlist.author}</h6>
                     <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
+                        {playlist.tracks.length} tracks by {playlist.tracks[0].artist} and more.
                     </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
+                    <Button 
+                        href={`/show/${playlist._id}`}
+                        user={props.user}
+                        playlist={playlist}
+                        className="Button" 
+                        variant="outline-primary">
+                    →</Button>
                 </Card.Body>
             </Card>
+        ))}
         </div>
     )
 }

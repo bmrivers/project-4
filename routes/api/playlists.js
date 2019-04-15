@@ -1,30 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const Playlist = require('../../models/playlist');
-// const playlistCtrl = require('../../controllers/playlist');
+const playlistCtrl = require('../../controllers/playlists');
 
-router.post('/', (req, res) => {
-    var newPlaylist = new Playlist(req.body);
-    newPlaylist.save((err, doc) => {
-        if (err) {
-            res.send(err);
-        } else {
-            res.send(doc)
-        }
-    });
-});
 
-router.get('/', async (req, res) => {
-    await Playlist.find({}, function(err, playlists) {
-        if (err) {
-            return next(err);
-        }
-        if (playlists) {
-            return res.json(playlists);
-        }
-        console.log('is the db even on?');
-        return null;
-    })  
-})
+router.post('/', playlistCtrl.create);
+
+router.get('/:id', playlistCtrl.show)
+router.get('/', playlistCtrl.index)
+
+// update
+
+// delete
 
 module.exports = router;

@@ -1,22 +1,36 @@
-import React from 'react';
-import NavBar from '../../components/NavBar/NavBar';
-import Search from '../../components/Search/Search';
-import PlaylistPage from '../PlaylistPage/PlaylistPage'
+import React, { Component } from 'react';
 import CardPlaylists from '../../components/CardPlaylists/CardPlaylists';import './MainPage.css'
+import playlistsService from '../../utils/playlistsService'
 
-const MainPage = (props) => {
-    return(
-        <div className="MainPage">
-            <NavBar 
-                className="NavBar"
-                user={props.user} 
-            />
-            <CardPlaylists 
-                // playlists={props.playlists}
-                user={props.user}
-            />
-        </div>
-    )
+
+const playlistRequest = () => {
+    return playlistsService.index()
+}
+
+
+class MainPage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            playlists: []
+        }
+    }
+
+    componentDidMount() {
+        playlistRequest().then(playlists => this.setState({playlists}))
+    }
+
+    render() {
+        return(
+            <div className="MainPage">
+                <CardPlaylists 
+                    // playlists={props.playlists}
+                    user={this.props.user}
+                    playlists={this.state.playlists}
+                />
+            </div>
+        )
+    }
 }
 
 

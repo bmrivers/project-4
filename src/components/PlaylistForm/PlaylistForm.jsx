@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import './PlaylistForm.css';
 
 class PlaylistForm extends Component {
@@ -79,43 +79,6 @@ class PlaylistForm extends Component {
                     name="playlistName"
                     value={this.state.name}
                 />
-                <br />
-                <Form.Label>Manually Add tracks: </Form.Label> <br />
-                {this.state.trackInputs.map((input, idx) => 
-                    <div key={idx}>
-                        {idx + 1}. Song, Artist<br />
-                        <div className="manual-input">
-                            <Form.Control 
-                                type="tracksFromInput"
-                                key={idx}
-                                value={this.state.tracksFromInput[idx]}
-                                onChange={this.handleTrackChange}
-                            />
-                            <Button variant="outline-primary" onSubmit={this.props.handleAddSong(this.state.tracksFromInput[idx])}>+</Button>
-                        </div>
-                    </div>
-                )}
-                <div className="button-holder">
-                    <Button 
-                        className="Button"
-                        onClick={() => this.appendInput()}
-                    >
-                        Another one</Button><br />
-                    <Button
-                        className="Button" 
-                        onClick={() => this.handleClearClick()}
-                    >
-                        Clear
-                    </Button>
-                    <br />
-                    <Button 
-                        className="Button alert"
-                        type='Submit' 
-                        value='Submit'
-                    >
-                        Add Tracks
-                    </Button>
-                </div>
               </Form.Group>
             </Form>
           </div>

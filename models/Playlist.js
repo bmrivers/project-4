@@ -8,7 +8,8 @@ const PlaylistSchema = new Schema({
     // tracks: [String] // or keys
     tracks: [{
       artist: String,
-      name: String
+      img: String,
+      name: String,
     }]
   }, {
     timestamps: true

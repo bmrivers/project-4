@@ -4,6 +4,7 @@ import { Button, Form, Table } from 'react-bootstrap';
 // import lastfmService from '../../utils/lastfmService';
 import getSearchResults from '../../services/lastfm-api.js';
 import LastfmTrack from '../LastfmTrack/LastfmTrack'
+import './Search.css';
 
 
 class Search extends Component {
@@ -66,7 +67,7 @@ class Search extends Component {
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Label>Search for a track here by name, artist, or keyword</Form.Label>
                     <Form.Control onChange={this.handleChange}></Form.Control>
-                    <Button type='Submit' value='Submit'>Submit</Button>
+                    <Button className="Button" type='Submit' value='Submit'>Search</Button>
                 </Form>
                 <Table responsive="sm">
                     <thead>

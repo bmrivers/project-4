@@ -1,10 +1,9 @@
-import tokenService from './tokenService';
-
 const BASE_URL = '/api/playlists/';
 
 export default {
   index,
-  create
+  create,
+  show
 };
 
 function index() {
@@ -17,6 +16,16 @@ function index() {
   return fetch(BASE_URL, options).then(res => res.json());
 }
 
+function show(id) {
+  const options = {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json',
+    },
+  };
+  return fetch(`${BASE_URL}${id}/`, options).then(res => res.json());
+}
+
 function create(playlist) {
     const options = {
       method: 'POST',
@@ -25,6 +34,7 @@ function create(playlist) {
       },
       body: JSON.stringify(playlist)
     };
+    console.log(options.body);
     return fetch(BASE_URL, options).then(res => res.json());
 }
   
