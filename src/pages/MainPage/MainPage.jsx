@@ -23,6 +23,11 @@ class MainPage extends Component {
     render() {
         return(
             <div className="MainPage">
+                <div className="title-div">
+                    <div>
+                        <h1 className="title">tape-deck</h1>
+                    </div>
+                </div>
                 <CardPlaylists 
                     // playlists={props.playlists}
                     user={this.props.user}
