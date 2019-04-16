@@ -20,20 +20,7 @@ class Search extends Component {
         })
     }
 
-    // componentDidUpdate = () => {
-    //     this.initialize()
-    //     this.initializeTrack()
-    // }
 
-
-    // initializeTrack = (t) => {
-    //     return(
-    //         {
-    //             track: t,
-    //             hidden: false
-    //         }
-    //     )
-    // }
 
     handleChange = (e) => {
         this.setState({searchValue: e.target.value});
