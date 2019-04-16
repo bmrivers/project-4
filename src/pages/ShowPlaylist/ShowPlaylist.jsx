@@ -18,7 +18,7 @@ class ShowPlaylist extends Component {
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         const self = this;
         playlistsService.show(this.props.match.params.id).then((playlist) =>
         ( self.setState({playlist: playlist})))
