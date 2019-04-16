@@ -99,6 +99,7 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar 
+          handleLogout={this.handleLogout}
           className="NavBar"
           user={this.state.user} 
         />

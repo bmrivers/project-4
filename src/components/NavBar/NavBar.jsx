@@ -10,7 +10,7 @@ const NavBar = (props) => {
       <Nav className="ml-auto">
         <Nav.Link href="/">HOME</Nav.Link>
         <Nav.Link href="/new">CREATE</Nav.Link>
-        <Nav.Link to='/' className='NavBar-link' onClick={props.handleLogout}>LOG OUT</Nav.Link>
+        <Nav.Link to='' className='NavBar-link' onClick={props.handleLogout}>LOG OUT</Nav.Link>
       </Nav>
     </>
     :
