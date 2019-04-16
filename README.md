@@ -1,68 +1,46 @@
+
+
+## tape-deck
+Bonny Rivers // General Assembly Santa Monica // Project 4 // April 2019
+
+<hr>
+
+[Click for a live demo on heroku](https://tape--deck.herokuapp.com/)
+
+####Introduction
+
+tape-deck is a social playlist-sharing app. The idea came from my original plan to re-create Spotify (not likely possible to do in the span of 1.5 weeks). 
+
+Users can sign up with an email to be able to create playlists. 
+
+![tape-deck screenshot](http://i68.tinypic.com/2s0oi2c.png)
+
+When creating a new playlist, users use the search bar to search through the Last.fm API for songs. Last.fm has a robust amount of song data available and includes many songs that aren't available on Spotify or Apple Music.
+
+![tape-deck screenshot2](http://i64.tinypic.com/29p99ad.png)
+
+####Technologies Used
+
+* React
+* MongoDB + Mongoose
+* Express
+* Node.js
+* Heroku
+* Last.fm API
+* VS Code
+* Chrome Dev Tools
+* Flaticon.com
+* Google Fonts
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+####Unsolved Problems
+* On the Create Playlist page, removing the song using the search Component does not always remove the song from the new Playlist.
+* The song artwork and information doesn't include the album that the song is included on. That requires an additional call from the API (which is unfortunate)
 
-In the project directory, you can run:
 
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+####Next Steps
+* "Like" Button: make it clickable, and implement a "Likes" page so that users can save songs for later
+*  Full CRUD: add the ability to update and delete playlists
+* Add pagination to search results (easy fix)
+* Friends-only: implement the ability to add friends so that users will only see playlists from people they know.
