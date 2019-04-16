@@ -1,4 +1,4 @@
-const rootURL =  'http://ws.audioscrobbler.com/2.0/?';
+const rootURL =  'https://ws.audioscrobbler.com/2.0/?';
 const key = process.env.LASTFM_KEY ;
 
 export default function getSearchResults(track) {
