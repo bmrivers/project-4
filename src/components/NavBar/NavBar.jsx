@@ -15,28 +15,19 @@ const NavBar = (props) => {
     </>
     :
     <>
-      <Nav.Item>
-        <Nav.Link  href="/login">Login</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link href="/signup">Signup</Nav.Link>
-      </Nav.Item>
+      <Nav className="ml-auto">
+        <Nav.Link  href="/login">LOGIN</Nav.Link>
+        <Nav.Link href="/signup">SIGNUP</Nav.Link>
+      </Nav>
     </>;
   
 
   return (
     <Navbar bg="light" className="Nav" variant="light tabs">
-      <img src={cassette} style={{width: "70px"}} />
+    <a href="/"><img alt="logo" src={cassette} style={{width: "70px"}} /></a>
       {nav}
     </Navbar>
   );
 }
 
 export default NavBar;
-// <div className="NavBar">
-//   <span className='NavBar-welcome'>WELCOME </span>
-
-//   <Link to='/login' className='NavBar-link'>LOG IN</Link>
-//   &nbsp;&nbsp;|&nbsp;&nbsp;
-//   <Link to='/signup' className='NavBar-link'>SIGN UP</Link>
-// </div>

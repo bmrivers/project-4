@@ -26,8 +26,10 @@ class MainPage extends Component {
                 <div className="title-div">
                     <div>
                         <h1 className="title">tape-deck</h1>
+                        <p>Create and share mixes with friends.</p>
                     </div>
                 </div>
+                <hr />
                 <CardPlaylists 
                     // playlists={props.playlists}
                     user={this.props.user}

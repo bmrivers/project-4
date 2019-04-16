@@ -18,7 +18,7 @@ class ShowPlaylist extends Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         const self = this;
         playlistsService.show(this.props.match.params.id).then((playlist) =>
         ( self.setState({playlist: playlist})))
@@ -45,12 +45,8 @@ class ShowPlaylist extends Component {
                         <td>{idx + 1}</td>
                         <td>{track.name}</td>
                         <td>{track.artist}</td>                
-                        <td> <Image src={track.img} rounded /></td>
-                        {this.props.user.name === track.author ? 
-                        <td>yep</td>
-                        :
+                        <td> <Image src={track.img} style={{height: '100px'}} rounded /></td>
                         <td><Image src={heart} style={{height: '30px'}}/></td>
-                        }
                     </tr>
                 ))}
                 </tbody>

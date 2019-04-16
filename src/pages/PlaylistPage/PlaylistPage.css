@@ -9,3 +9,14 @@
 .title {
     margin-top: 20px;
 }
+
+.side-by-side {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.modal1 {
+    width: 50%;
+    margin: 10px;
+}

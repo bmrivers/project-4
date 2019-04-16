@@ -1,5 +1,5 @@
 import React from 'react';
-import playlistImg from '../../images/playlist.png'
+// import playlistImg from '../../images/playlist.png'
 import { Card, Button } from 'react-bootstrap';
 import './CardPlaylists.css'
 
@@ -8,7 +8,7 @@ const CardPlaylists = (props) => {
         <div className="CardPlaylists">
         {props.playlists.map((playlist, idx) => (
             <Card className="Card" key={playlist._id} style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={playlistImg} style={{ width: '40%', margin: '10px' }}/>
+                <Card.Img variant="top" src={playlist.tracks[0].img} />
                 <Card.Body>
                     <Card.Title>{playlist.playlistName}</Card.Title>
                     <h6>{playlist.author}</h6>

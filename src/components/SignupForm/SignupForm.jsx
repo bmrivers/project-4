@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap'
 import NavBar from '../../components/NavBar/NavBar';
 import userService from '../../utils/userService';
 
@@ -41,7 +42,6 @@ class SignupForm extends Component {
   render() {
     return (
       <div>
-        <NavBar />
         <header className="header-footer">Sign Up</header>
         <form className="form-horizontal" onSubmit={this.handleSubmit} >
           <div className="form-group">
@@ -66,7 +66,7 @@ class SignupForm extends Component {
           </div>
           <div className="form-group">
             <div className="col-sm-12 text-center">
-              <button className="btn btn-default" disabled={this.isFormInvalid()}>Sign Up</button>&nbsp;&nbsp;
+              <Button type="submit" className="outline-primary" disabled={this.isFormInvalid()}>Sign Up</Button>&nbsp;&nbsp;
               <Link to='/'>Cancel</Link>
             </div>
           </div>

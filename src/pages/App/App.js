@@ -8,7 +8,6 @@ import MainPage from '../MainPage/MainPage'
 import PlaylistPage from '../PlaylistPage/PlaylistPage'
 import NavBar from '../../components/NavBar/NavBar'
 import ShowPlaylist from '../ShowPlaylist/ShowPlaylist'
-import concert from '../../images/concert.png'
 import cassetteImg from '../../images/cassette.png'
 import './App.css';
 
@@ -51,10 +50,8 @@ class App extends Component {
     }
     newSong.artist = lastfmObj.artist;
     newSong.name = lastfmObj.name;
-    if (lastfmObj.image.length >= 2) {
-      newSong.img = lastfmObj.image[1]["#text"];
-    } else if (lastfmObj.image.length === 1) {
-      newSong.img = lastfmObj.image[0]["#text"];
+    if (lastfmObj.image.length) {
+      newSong.img = lastfmObj.image[lastfmObj.image.length - 1]["#text"];
     } else {
       newSong.img = cassetteImg;
     }

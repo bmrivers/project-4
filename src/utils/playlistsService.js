@@ -27,14 +27,18 @@ function show(id) {
 }
 
 function create(playlist) {
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(playlist)
-    };
-    console.log(options.body);
-    return fetch(BASE_URL, options).then(res => res.json());
+    if (playlist.tracks.length >= 1 && playlist.playlistName) {
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(playlist)
+      };
+      console.log(options.body);
+      return fetch(BASE_URL, options).then(res => res.json());
+  } else {
+    alert('Please add a name and at least 1 song!')
+  }
 }
   

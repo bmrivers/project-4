@@ -5,8 +5,10 @@ import './CurrentPlaylist.css'
 
 const CurrentPlaylist = (props) => (
     <div>
+    {props.newPlaylist.length ? 
+    <>
         <h5>{props.newPlaylistName}</h5>
-        <Table responsive="sm">
+        <Table striped responsive="sm">
         <thead>
             <tr>
                 <th></th>
@@ -35,6 +37,10 @@ const CurrentPlaylist = (props) => (
         <Button
             onClick={props.handleSavePlaylist}
         >Save New Playlist</Button>  
+        </>
+            :
+        <>
+        </> }
     </div>
 )
 
